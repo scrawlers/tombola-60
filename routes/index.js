@@ -2,10 +2,6 @@ var async = require('async');
 var moment = require('moment');
 var db = require('../library/mongo.js').db;
 var printpdf = require('./print.js');
-var passport = require('passport');
-
-
-
 module.exports = {
 	
 	home : function(req,res){
@@ -248,9 +244,21 @@ module.exports = {
 					}
 					cb(null,result);
 				});
+			},
+			winner : function(cb){
+				var content = {};
+				content.table = "winner";
+				content.condition = {};
+				db.list(content,function(err,result){
+					if(!result){
+						result = new Array();
+					}
+					console.log(result);
+					cb(null,result);
+				});
 			}
 		},function(err,result){
-			res.render('verify',{production:result.production,combination:{},winner :{}});
+			res.render('verify',{production:result.production,combination:{},winner :result.winner[0]});
 		});
 		
 		
@@ -409,8 +417,7 @@ module.exports = {
 		}
 
 	},
-	
-	login : function(req,res){
+        login : function(req,res){
 		console.log(req.path);
 		res.render('login');
 	},
