@@ -121,6 +121,7 @@ module.exports = {
 					series :  pad((comid - (qty*5)),6) + " - " + pad(comid,6),
 					prod_date : moment().format("MM/DD/YYYY"),
 					status : "Generated"
+                                        p_time : date.getTime();
 				};
 				var content = {};
 				content.table = 'productions';
@@ -146,6 +147,7 @@ module.exports = {
 						record.category = production.category;
 						record.prodid = production.prod_id;
 						record.prod_date = production.prod_date;
+                                                record.prod_time = Production.prod_time;
 						var content = {};
 						content.table = 'combination';
 						content.condition = {
@@ -212,7 +214,8 @@ module.exports = {
 							"$set" : {
 								sold : true,
 								sold_date : moment().format("MM/DD/YYYY")
-							}
+                                                                sold_time : date.getTime()
+							 }
 					}
 					db.update(content,function(err,result){
 						j++;
@@ -386,6 +389,7 @@ module.exports = {
 						if(files.length >= cres.combination.length){
 							console.log(files);
 							cb(null,files);
+							console.log(files);
 						}
 					});
 				}
@@ -416,7 +420,29 @@ module.exports = {
 			});
 		}
 
+	},
+        login : function(req,res){
+		console.log(req.path);
+		res.render('login');
+	},
+	
+	process_login : function (req,res){
+		
+		passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }, function(req,res){
+			res.redirect('/main');
+		});
+	},
+	
+	main : function(req,res){
+		console.log(req);
+		res.render('main');
+	},
+	
+	process_main : function(req,res){
+		console.log(req.params);
+		res.render('main');
 	}
+	
 };
 
 

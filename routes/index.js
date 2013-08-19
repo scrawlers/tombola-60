@@ -121,6 +121,7 @@ module.exports = {
 					series :  pad((comid - (qty*5)),6) + " - " + pad(comid,6),
 					prod_date : moment().format("MM/DD/YYYY"),
 					status : "Generated"
+                                        p_time : date.getTime();
 				};
 				var content = {};
 				content.table = 'productions';
@@ -146,6 +147,7 @@ module.exports = {
 						record.category = production.category;
 						record.prodid = production.prod_id;
 						record.prod_date = production.prod_date;
+                                                record.prod_time = Production.prod_time;
 						var content = {};
 						content.table = 'combination';
 						content.condition = {
@@ -211,8 +213,9 @@ module.exports = {
 					content.record = {
 							"$set" : {
 								sold : true,
-								sold_date : moment().format("MM/DD/YYYY")
-							}
+								sold_date : moment().format("MM/DD/YYYY"),
+                                                                sold_time : date.getTime()
+							 }
 					}
 					db.update(content,function(err,result){
 						j++;
@@ -386,6 +389,7 @@ module.exports = {
 						if(files.length >= cres.combination.length){
 							console.log(files);
 							cb(null,files);
+							console.log(files);
 						}
 					});
 				}

@@ -28,7 +28,7 @@ block content
               .control-group
                 label.control-label Box Type
                 .controls
-                  select.dropdown-toggle.input-medium(id="box_type", name="box_type", required="required")
+                  .dropdown-toggle.input-medium(id="box_type", name="box_type", required="required")
                     option(value="6") Box of Six
                     option(value="9") Box of Nine
                     option(value="12") Box of Twelve
@@ -44,7 +44,7 @@ block content
                   .span6
                     button.btn.btn-success.input-medium(type="submit") Submit
                   .span6
-                    button.btn-large.btn-info.input-large(type="button") Clear GAME
+                    button.btn-large.btn-info.input-large(type="button",id = "clearme") Clear GAME
         .span6
           .summary
              .control-group(style="width:500px;")
