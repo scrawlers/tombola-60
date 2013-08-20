@@ -9,7 +9,7 @@ block content
       .span12
         .span6
           .summary
-            form.form-horizontal(method="POST",action="/verify")
+            form.form-horizontal.verify(method="POST",action="/verify")
               .title-bar
                 span.title Winning Card Verification
               .control-group
@@ -28,7 +28,7 @@ block content
               .control-group
                 label.control-label Box Type
                 .controls
-                  .dropdown-toggle.input-medium(id="box_type", name="box_type", required="required")
+                  select.dropdown-toggle.input-medium(id="box_type", name="box_type", required="required")
                     option(value="6") Box of Six
                     option(value="9") Box of Nine
                     option(value="12") Box of Twelve
@@ -40,10 +40,9 @@ block content
                   input.input-medium(type="text", id="series",name="series", placeholder="Type series here", required="required")
               .control-group
                 .controls
-                .span12
-                  .span6
+                 
                     button.btn.btn-success.input-medium(type="submit") Submit
-                  .span6
+                 .row-fluid btn
                     button.btn-large.btn-info.input-large(type="button",id = "clearme") Clear GAME
         .span6
           .summary

@@ -11,22 +11,20 @@ block content
                   th Category
                   th Production No.
                   th Series
-                  th Sold series
-                  th Print Date
+                  th Sold Date
                   th Sold time
               tbody
-                - var items = production
+                - var items = combination
                 each item in items
                   tr
                     td=item.category
-                    td=item.prod_id
+                    td=item.prodid
                     td=item.series            
-                    td=item.series
                     td=item.sold_date
                     td=item.sold_time
         .span6
           .summary
-            form.form-horizontal(method="POST",action="/sold")
+            form.form-horizontal_sold(method="POST",action="/sold")
               .title-bar
                 span.title Record Sold Card
               .control-group

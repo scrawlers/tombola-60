@@ -121,7 +121,7 @@ module.exports = {
 					series :  pad((comid - (qty*5)),6) + " - " + pad(comid,6),
 					prod_date : moment().format("MM/DD/YYYY"),
 					status : "Generated"
-                                        p_time : date.getTime();
+                                        
 				};
 				var content = {};
 				content.table = 'productions';
@@ -147,7 +147,7 @@ module.exports = {
 						record.category = production.category;
 						record.prodid = production.prod_id;
 						record.prod_date = production.prod_date;
-                                                record.prod_time = Production.prod_time;
+                                                record.prod_time = production.prod_time;
 						var content = {};
 						content.table = 'combination';
 						content.condition = {
@@ -190,9 +190,24 @@ module.exports = {
 					}
 					cb(null,result);
 				});
+			},
+                       combination : function(cb){
+				var content = {};
+				content.table = "combination";
+				content.condition = {
+                                      sold : true
+                                };
+				
+				db.list(content,function(err,result){
+					if(!result){
+						result = new Array();
+					}
+					cb(null,result);
+				});
 			}
 		},function(err,result){
-			res.render('sold',{production:result.production});
+                        console.log(result.combination);
+			res.render('sold',{production:result.production,combination:result.combination});
 		});
 	},
 	sold_card : function(req,res){
@@ -214,7 +229,7 @@ module.exports = {
 							"$set" : {
 								sold : true,
 								sold_date : moment().format("MM/DD/YYYY"),
-                                                                sold_time : date.getTime()
+								sold_time : moment().format("HH:MM:SS"),
 							 }
 					}
 					db.update(content,function(err,result){
@@ -287,8 +302,7 @@ module.exports = {
 				content.table = "combination";
 				content.condition = {
 						series : Number(req.body.series),
-						sold : true,
-						sold_date : moment().format("MM/DD/YYYY")
+						sold : true
 				};
 				console.log(content);
 				db.list(content,function(err,result){

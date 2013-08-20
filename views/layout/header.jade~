@@ -4,13 +4,13 @@
       .navbar-inner
         .brand-wrapper
           a.brand(href="/")
-            img.logo(src="/stylesheets/images/logo.png")
+            img.logo(src="/stylesheets/images/logo75_1.png")
         ul.nav
           li
             a(href="/print") Generate Card
           li
             a(href="/sold") Sold Card
           li
-            a(href="/verify") Verify Card
+            a(href="/verify") Play Game
           li
             a(href="/download") Print Card

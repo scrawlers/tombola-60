@@ -89,11 +89,37 @@ body {
 	padding-top: 30px;
 	
 }
-.form-horizontal{
-	padding-top: 20px;
-	border: 1px inset black;
+.form-horizontal.sold{
+	 background-color: silver;
+    border: 3px inset black;
+    padding: 48px;
+    width: 435px;
 	
 }
+.form-horizontal.print{
+    background-color: lightgray;
+    border: 3px groove black;
+    padding: 48px;
+    width: 435px;;
+	
+}
+.form-horizontal.verify{
+	 background-color: silver;
+    border: 3px inset black;
+    padding: 48px;
+    width: 435px;
+	
+}
+.row-fluid_btn{
+    padding-bottom: 28px;
+    padding-left: 198px;
+    padding-top: 15px;
+}
+
+
+
+
+
 .title-bar{
 	 width: 100%;
 	 text-align: left;
@@ -106,7 +132,7 @@ span.title{
 .form-horizontal .controls {
     margin-left: 202px;
 }
-.controls .input-mini {
+.controls.input-mini {
     border: 0 solid black;
     font-size: 28px;
     font-weight: bold;
@@ -115,7 +141,7 @@ span.title{
     margin-right: 3px;
     width: 34px;
     text-align: center;
-    padding-left: 15px;
+    padding-left: 12px;
     padding-bottom: 9px;
     padding-top: 6px;
 }
@@ -143,19 +169,18 @@ padding-top: 31px;
 background-image: url(/gameset/Box_of_6.png);
 border : none;
 height: 222px;
-width: 124px;
+width: 125px;
+border: 4px solid black;
+}
+.controls.boxlist.boxbg6.input-mini{
+padding-top: 31px;
+background-image: url(/gameset/Box_of_6.png);
+border : none;
+height: 222px;
+width: 125px;
+border: 4px solid black;
 }
 
-.controls.boxlist.boxbg6.input-mini1{
-    border: 0 solid black;
-    font-size: 32px;
-    font-weight: bold;
-    height: 52px;
-    margin-left: 5px;
-    margin-right: 3px;
-    width: 40px;
-    text-align: center;
-}
 
 .controls.boxlist.boxbg9{
     padding-top: 31px;    
@@ -184,7 +209,7 @@ padding-top: 32px;
 background-image: url(/gameset/Box_of_18.png);
 border : 2px solid gray;
 height: 217px;
-width: 365px;
+width: 366px;
 }
 
 .button-login {
@@ -198,9 +223,6 @@ width: 365px;
     width: 106px;
 }
 
-.btn:first-child {
-    margin-left: 182px;
-}
 
 .container {
     position: relative;
