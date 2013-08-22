@@ -15,6 +15,7 @@ block content
                   th Series
                   th Status
                   th Print Date
+                  th Time
               tbody
                 - var items = production
                 each item in items
@@ -26,6 +27,7 @@ block content
                     td=item.series
                     td=item.status
                     td=item.prod_date
+                    td=item.time
         .span5
           .summary
             form.form-horizontal(method="POST",action="/print")

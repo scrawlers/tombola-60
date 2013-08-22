@@ -91,23 +91,31 @@ body {
 }
 .form-horizontal.sold{
 	 background-color: silver;
-    border: 3px inset black;
+    border: 5px ridge black;
     padding: 48px;
     width: 435px;
 	
 }
+.form-horizontal.generate{
+    background-color: lightgray;
+    border: 5px ridge black;
+    padding: 48px;
+    width: 435px;;
+}
+
 .form-horizontal.print{
     background-color: lightgray;
-    border: 3px groove black;
+    border: 5px ridge black;
     padding: 48px;
     width: 435px;;
 	
 }
 .form-horizontal.verify{
 	 background-color: silver;
-    border: 3px inset black;
+    border: 5px ridge black;
     padding: 48px;
     width: 435px;
+    height: 294px;
 	
 }
 .row-fluid_btn{
