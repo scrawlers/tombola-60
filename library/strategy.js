@@ -36,7 +36,7 @@ passport.use(new LocalStrategy(
 					else{
 						var permission = {};
 						for(var i in result){
-							permission[result[i].action + "_" + result[i].table + "_" + result[i].process] = true;
+							permission[result[i].page] = true;
 						}
 						callback(null,permission);
 					}
@@ -92,7 +92,7 @@ passport.deserializeUser(function(_id, done) {
 				else{
 					var permission = {};
 					for(var i in result){
-						permission[result[i].action + "_" + result[i].table + "_" + result[i].process] = true;
+						permission[result[i].page] = true;
 					}
 					callback(null,permission);
 				}

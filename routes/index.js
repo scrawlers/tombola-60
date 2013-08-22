@@ -18,7 +18,8 @@ module.exports = {
 			if(!result){
 				result = new Array();
 			}
-			res.render('print',{production:result});
+			//add ,permission:req.user.permission
+			res.render('print',{production:result,permission:req.user.permission});
 		});
 		
 	},
@@ -170,7 +171,7 @@ module.exports = {
 			
 		},function(err,result){
 			console.log(result);
-			res.redirect('/print');
+			res.redirect('/print',{permission:req.user.permission});
 		});
 		
 	},
@@ -206,8 +207,9 @@ module.exports = {
 				});
 			}
 		},function(err,result){
-                        console.log(result.combination);
-			res.render('sold',{production:result.production,combination:result.combination});
+            console.log(result.combination);
+            //add ,permission:req.user.permission
+			res.render('sold',{production:result.production,combination:result.combination,permission:req.user.permission});
 		});
 	},
 	sold_card : function(req,res){
@@ -243,7 +245,7 @@ module.exports = {
 				
 			}
 		},function(err,result){
-			res.redirect('/sold');
+			res.redirect('/sold',{permission:req.user.permission});
 		});
 	},
 	verify : function(req,res){
@@ -276,10 +278,8 @@ module.exports = {
 				});
 			}
 		},function(err,result){
-			res.render('verify',{production:result.production,combination:{},winner :result.winner[0]});
+			res.render('verify',{production:result.production,combination:{},winner :result.winner[0],permission:req.user.permission});
 		});
-		
-		
 	},
 	verify_winner : function(req,res){
 		async.auto({
@@ -325,7 +325,7 @@ module.exports = {
 				});
 			}
 		},function(err,result){
-			res.render('verify',{production:result.production,combination:result.combination[0],winner:result.winner[0]});
+			res.render('verify',{production:result.production,combination:result.combination[0],winner:result.winner[0],permission:req.user.permission});
 		});
 	},	
 	download : function(req,res){
@@ -346,10 +346,9 @@ module.exports = {
 				});
 			}
 		},function(err,result){
-			res.render('download',{production:result.production});
+			// add ,permission:req.user.permission
+			res.render('download',{production:result.production,permission:req.user.permission});
 		});
-		
-		
 	},
 	download_card : function(req,res){
 		
@@ -410,13 +409,13 @@ module.exports = {
 			}]
 		},function(err,result){
 			console.log(result.combination);
-			res.render('download',{production:result.production,files:result.printTofile});
+			res.render('download',{production:result.production,files:result.printTofile,permission:req.user.permission});
 		});
 		
 		
 	},
 	winner : function(req,res){
-		res.render('winner');
+		res.render('winner',{permission:req.user.permission});
 	}
 	,
 	socket_lucky : function(req){
@@ -436,8 +435,13 @@ module.exports = {
 
 	},
         login : function(req,res){
-		console.log(req.path);
 		res.render('login');
+	},
+	
+	logout : function(req,res){
+		console.log("logging out..");
+		req.logout();
+		res.redirect('/');
 	},
 	
 	process_login : function (req,res){
@@ -448,12 +452,12 @@ module.exports = {
 	},
 	
 	main : function(req,res){
-		console.log(req);
-		res.render('main');
+		console.log("---MAIN---");
+		console.log(req.user);
+		res.render('main',{permission:req.user.permission});
 	},
 	
 	process_main : function(req,res){
-		console.log(req.params);
 		res.render('main');
 	}
 	

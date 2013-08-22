@@ -67,7 +67,7 @@ app.get('/print',auth,routes.print);
 app.post('/print',auth,routes.generate);
 
 app.get('/login',routes.login);
-//app.post('/login',routes.process_login);
+app.get('/logout',routes.logout);
 app.get('/main',auth,routes.main);
 app.post('/main',auth,routes.process_main);
 
@@ -86,5 +86,7 @@ app.listen(8081);
 app.post('/login',
 		passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
 		function(req,res){
+			console.log("---POST LOGIN---");
+			console.log(req.user.role);
 			res.redirect('/main');
 		});
